@@ -69,10 +69,7 @@ def find_student_score(students, name):
         점수 (없으면 None)
     """
     # TODO: students에서 name 찾기
-    for i in (students):
-	    if name==i:
-		    return students[i]
-    return None
+    return students.get(name)
 
 # 테스트 케이스
 if __name__ == "__main__":
