@@ -71,6 +71,7 @@ def lcm(a, b):
         최소공배수
     """
     # TODO: LCM 계산
+    #두 수의 곱=GCD*LCM
     return(a*b)//gcd(a,b)
 
 def extended_gcd(a, b):
@@ -116,10 +117,13 @@ def is_prime(n):
     # 3부터 sqrt(n)까지 홀수만 확인
     if n<2:
         return False
+    #2는 유일한 짝수 소수
     elif n==2:
         return True
+    #나머지 짝수 처리 -> 짝수는 모두 2로 나누어 떨어지기 떄문에 소수가 아님
     elif n%2==0:
         return False
+    #홀수 약수 확인
     else:
         for i in range(3,int(sqrt(n))+1,2):
             if n%i==0:
