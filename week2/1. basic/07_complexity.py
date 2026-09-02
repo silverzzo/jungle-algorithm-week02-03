@@ -28,21 +28,20 @@ def find_duplicates_brute_force(nums):
     시간 복잡도: O(n²)
     공간 복잡도: O(k) - k는 중복 원소 개수
     """
-    duplicates = []
-    n = len(nums)
     
     # TODO: 이중 반복문으로 중복 찾기
     ## i번째 원소와 i+1 이후의 모든 원소를 비교
     ## 같은 원소를 찾으면 duplicates에 추가 (중복 추가 방지 필요)
-    for i in range(n-1):
-        for j in range(i+1,n):
-            if nums[i]==nums[j]:
-                if len(duplicates)==0:
-                    duplicates.append(nums[j])
-                else:
-                    if nums[j] not in duplicates:
-                        duplicates.append(nums[j])
+    duplicates = []
+    n = len(nums)
     
+    # 각 원소를 자신보다 뒤에 있는 원소들과만 비교하기 위해
+    # i는 마지막 원소 전까지, j는 i의 다음 위치부터 끝까지 순회.
+    for i in range(n-1):
+        for j in range(i+1,n): 
+            if nums[i]==nums[j]:
+                if nums[i] not in duplicates:
+                    duplicates.append(nums[i])
     return duplicates
 
 def find_duplicates_sorting(nums):
