@@ -146,6 +146,8 @@ def combinations(n: int, k: int) -> list:
         #
         # TODO(Level 1): 아래 두 줄을 직접 작성하세요.
         if len(current_combination) == k:
+            # cur의 현재 상태를 복사해서 result에 저장
+            # -> pop()이 원본 cur를 바꿔도 저장된 조합은 유지됨
             result.append(list(current_combination))
             return #현재 재귀 호출을 끝내고 이전 단계로 돌아감
 
