@@ -43,7 +43,6 @@ def bubble_sort(arr):
         for j in range(n-i-1):
             ## TODO: 인접한 두 원소 비교 및 교환
             ## arr[j] > arr[j+1]이면 교환
-            ## 외부 반복문: n-1번 실행
             if arr[j]>arr[j+1]:
                 temp1=arr[j]
                 arr[j]=arr[j+1]
