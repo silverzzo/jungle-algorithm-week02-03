@@ -74,6 +74,8 @@ def lcm(a, b):
     #두 수의 곱=GCD*LCM
     return(a*b)//gcd(a,b)
 
+# 함수 호출마다 서로 다른 a,b를 가짐. 
+# ex) (35,15)->(15,5)->(5,0) -> GCD=5
 def extended_gcd(a, b):
     """
     확장 유클리드 호제법
@@ -92,8 +94,12 @@ def extended_gcd(a, b):
     if b==0:
         return (a,1,0)
     
-    g,x1,y1=extended_gcd(b,a%b)
+    # a*y1 + b*(x1 - (a // b)*y1) = g 식의 계수
+    #a의 계수 = y1
+    #b의 계수 = x1 - (a // b)*y1
+    # 이 계수들을 a, b에 덮어쓰지 않고, 재귀 호출을 통해 g, x1, y1을 받아와서 새로운 x, y를 계산해야 함.
     
+    g,x1,y1=extended_gcd(b,a%b) 
     x=y1
     y=x1-(a//b)*y1
     return(g,x,y)
