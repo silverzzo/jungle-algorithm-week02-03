@@ -100,8 +100,8 @@ class Node:
         └──────┴──────┘
     """
     def __init__(self, data):
-        self.data = data
-        self.next = None
+        self.data = data # 전달 받은 값
+        self.next = None # 아직 다음 노드가 업으므로 None
 
 
 class LinkedList:
@@ -111,6 +111,7 @@ class LinkedList:
         head ──▶ [data|next] ──▶ [data|next] ──▶ ... ──▶ [data|None]
     """
     def __init__(self):
+        # 처음에는 노드가 하나도 없으니까 None
         self.head = None
 
     def append(self, data):
