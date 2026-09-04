@@ -39,21 +39,32 @@ class TreeNode:
         self.left = None
         self.right = None
 
+# root를 루트로 하는 서브트리를 전위순회한 결과를 리스트로 반환함
 def preorder(root):
     """전위 순회: 루트 → 왼쪽 → 오른쪽"""
     result = []
     
     # TODO: root가 None이면 빈 리스트 반환
-    pass
+    if root is None:
+        return result
     
     # TODO: 루트 값 추가
-    pass
+    # 질문 1:
+    # 현재 노드의 값은 어떻게 꺼내며,
+    # 그것을 result에 어떻게 한 개 추가할까?
+    result.append(root.value)
     
     # TODO: 왼쪽 서브트리 순회
-    pass
+    # 질문 2:
+    # 현재 노드의 왼쪽 자식을 preorder에 전달하면
+    # 어떤 자료형이 반환될까?
+    # 그 반환값을 result에 어떻게 합칠까?
+    result.extend(preorder(root.left))
     
     # TODO: 오른쪽 서브트리 순회
-    pass
+    # 질문 3:
+    # 오른쪽 자식도 같은 방식으로 처리하려면?
+    result.extend(preorder(root.right))
     
     return result
 
@@ -62,16 +73,17 @@ def inorder(root):
     result = []
     
     # TODO: root가 None이면 빈 리스트 반환
-    pass
+    if root is None:
+        return result
     
     # TODO: 왼쪽 서브트리 순회
-    pass
+    result.extend(inorder(root.left))
     
     # TODO: 루트 값 추가
-    pass
+    result.append(root.value)
     
     # TODO: 오른쪽 서브트리 순회
-    pass
+    result.extend(inorder(root.right))
     
     return result
 
@@ -80,16 +92,17 @@ def postorder(root):
     result = []
     
     # TODO: root가 None이면 빈 리스트 반환
-    pass
+    if root is None:
+        return result
     
     # TODO: 왼쪽 서브트리 순회
-    pass
+    result.extend(postorder(root.left))
     
     # TODO: 오른쪽 서브트리 순회
-    pass
+    result.extend(postorder(root.right))
     
     # TODO: 루트 값 추가
-    pass
+    result.append(root.value)
     
     return result
 
