@@ -47,13 +47,13 @@ def manage_grades(students):
 
     # TODO: 평균 점수 계산   
     for i in (students):
-	    scores+=students[i]
+        scores+=students[i]
     average=scores/len(students)
     # TODO: 최고 점수 학생 찾기
     for i in (students):
-	    if students[i]>top_score:
-		    top_student=i
-		    top_score=students[i]
+        if students[i]>top_score:
+            top_student=i
+            top_score=students[i]
     
     return average, top_student, top_score
 
