@@ -1,6 +1,11 @@
 """
 [위상 정렬 - Topological Sort]
 
+진입 차수 0인 정점을 처리한다
+→ 그 정점이 가리키는 정점들의 진입 차수를 1씩 줄인다
+→ 새롭게 진입 차수 0이 된 정점은 다음에 처리할 수 있다
+
+
 문제 설명:
 - 방향 그래프에서 순서를 정합니다.
 - 선행 작업이 먼저 오도록 정렬합니다.
@@ -22,8 +27,10 @@
 
 힌트:
 - 진입 차수(in-degree) 사용
+    -> “나한테 들어오는 화살표가 몇 개냐” ==  “나보다 먼저 처리되어야 하는 정점이 몇 개냐”
 - 진입 차수가 0인 정점부터 시작
 - 큐 사용
+    -> 현재 처리 가능한 정점들을 모아둠
 """
 
 from collections import deque
@@ -40,20 +47,39 @@ def topological_sort(vertices, edges):
         위상 정렬 순서
     """
     # TODO: 그래프와 진입 차수 초기화
-    pass
+    
+    graph=[[] for _ in range (vertices)]
+    indegree = [0 for _ in range(vertices)]
     
     # TODO: 그래프 구성 및 진입 차수 계산
-    pass
-    
+    for edge in edges:
+        start,end=edge
+        graph[start].append(end)
+        indegree[end]+=1
+        
+            
     # TODO: 진입 차수가 0인 정점들을 큐에 추가
-    pass
+    
+    queue=deque()
+        
+    for i in range(vertices):
+        if indegree[i]==0:
+            queue.append(i)
     
     result = []
     
     # TODO: 큐가 빌 때까지 반복
     ## 큐에서 정점 꺼내기
     ## 인접한 정점들의 진입 차수 감소
-    pass
+    while queue:
+        current=queue.popleft()
+        result.append(current)
+        
+        for next_node in graph[current]:
+            indegree[next_node]-=1
+            
+            if indegree[next_node]==0:
+                queue.append(next_node)
     
     return result
 
